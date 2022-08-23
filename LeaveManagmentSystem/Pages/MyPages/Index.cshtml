@@ -1,0 +1,77 @@
+﻿@page
+@model LeaveManagmentSystem.Pages.MyPages.IndexModel
+@{
+}
+<br />
+<h2> New Leave Request </h2>
+
+<!-- Checking for any error messages-->
+@if (Model.errorMessage.Length > 0)
+{
+    <div class="alert alert-warning alert alert-dismissible fade show " role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss='alert' aria-label="Close"> </button>   
+    </div>
+}
+
+<form method="POST">
+    <div class="row mb-3">
+        <label class="clo-sm-3 col-form-label"> Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="name" value="@Model.info.name" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="clo-sm-3 col-form-label"> Surname</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="surname" value="@Model.info.surname" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="clo-sm-3 col-form-label"> Leave Date</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="leaveDate" value="@Model.info.leaveDate" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="clo-sm-3 col-form-label"> End Date</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="endDate" value="@Model.info.endDate" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="clo-sm-3 col-form-label"> Type of Leave</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="typeOfLeave" value="@Model.info.typeOfLeave" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="clo-sm-3 col-form-label"> Reason</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="reason" value="@Model.info.reason" />
+        </div>
+    </div>
+    
+    <!-- Displaying the sucess message-->
+    @if (Model.sucMessage.Length > 0)
+{
+    <div class="row mb-3"> 
+        <div class="col-sm-9">
+            <div class="alert alert-success alert-dismissible fade show " role="alert">
+                <strong>@Model.sucMessage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss='alert' aria-label="Close"> </button>   
+            </div>
+         </div>
+    </div>
+}
+
+    <!-- Submitting or canceling the form buttons-->
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary"> Submit </button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/MyPages/Create" role="button"> Cancel </a>
+        </div>
+    </div>
+</form>

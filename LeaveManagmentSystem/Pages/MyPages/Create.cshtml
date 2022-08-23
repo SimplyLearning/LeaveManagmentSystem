@@ -1,0 +1,43 @@
+﻿@page
+@model LeaveManagmentSystem.Pages.MyPages.CreateModel
+@{
+}
+
+<br />
+<h2> List of Requests for Leave</h2>
+<a class='btn btn-primary btn=sm' href='/MyPages/Index'> New Request</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th> ID </th>
+            <th> Name </th>
+            <th> Surname </th>
+            <th> Leave Date </th>
+            <th> End Date </th>
+            <th> Type of Leave </th>
+            <th> Reason </th>
+            <th> Action </th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var item in Model.listEmployee)
+        {
+            <tr>
+                <td>@item.employeeID </td>
+                <td>@item.name </td>
+                <td>@item.surname </td>
+                <td>@item.leaveDate </td>
+                <td>@item.endDate </td>
+                <td>@item.typeOfLeave </td>
+                <td>@item.reason </td>
+                <td>
+                <a class="btn btn-primary btn-sm" href="/MyPages/Edit?id=@item.employeeID"> Edit </a>
+                <a class="btn btn-danger btn-sm" href="/MyPages/Delete?id=@item.employeeID"> Delete </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

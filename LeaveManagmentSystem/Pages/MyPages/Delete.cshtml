@@ -1,0 +1,28 @@
+﻿@page
+@using System.Data.SqlClient;
+
+@{
+}
+
+@{
+    try
+    {
+        String employeeID = Request.Query["employeeID"];
+
+        string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=LeaveManagementDatabase;Integrated Security=True";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            String sql = "DELETE FROM Employee WHERE employeeID=@employeeID";
+            using (SqlCommand command = new SqlCommand (sql, connection))
+            {
+                command.Parameters.AddWithValue("@employeeID", employeeID);
+                command.ExecuteNonQuery();
+            }
+        }
+    } catch (Exception ex)
+    {
+
+    }
+    Response.Redirect("/MyPages/Create");
+}
